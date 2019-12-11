@@ -51,7 +51,13 @@ it('si falla la llamada el error debe ser igual al error del servicio',()=>{
   expect(component.mensajeError).toBe(miError);
 
 })
-
+// test 5 
+it('Debe de llamar al servidor para borrar un medico',()=>{
+    spyOn( window,'confirm').and.returnValue(true);
+    const espia = spyOn(servicio,'borrarMedico').and.returnValue(EMPTY);
+    component.borrarMedico('1');
+    expect(espia).toHaveBeenCalledWith('1');
+})
 //test 6
 it('No debe llamar al servidor para borrar un medico cuando el cofirmar sea negativo',()=>{
     spyOn( window,'confirm').and.returnValue(false);
